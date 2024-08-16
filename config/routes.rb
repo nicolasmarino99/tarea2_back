@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/name'
-  get 'products/description'
-  get 'products/price'
   devise_for :users, path: 'api/v1', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
