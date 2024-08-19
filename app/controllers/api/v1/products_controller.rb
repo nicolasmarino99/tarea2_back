@@ -7,7 +7,7 @@ module Api
       # GET /api/v1/products
       def index
         products = Product.paginate(page: params[:page], per_page: 20)
-        render json: { success: true, products: }
+        render json: ProductSerializer.new(products).serializable_hash.to_json
       end
 
       # POST /api/v1/products
@@ -23,7 +23,7 @@ module Api
       # GET /api/v1/products/:id
       def show
         product = find_product
-        render json: { success: true, product: }
+        render json: ProductSerializer.new(product).serializable_hash.to_json
       end
 
       # PATCH/PUT /api/v1/products/:id
@@ -58,7 +58,7 @@ module Api
       def render_success(product, message)
         render json: {
           status: { code: 200, message: message },
-          data: product
+          data: ProductSerializer.new(product).serializable_hash
         }
       end
 
