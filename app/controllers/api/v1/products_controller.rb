@@ -4,17 +4,30 @@ module Api
   module V1
     # ProductsController description
     class ProductsController < ApplicationController
+      before_action :set_user_by_username, only: [:user_products_by_username]
+
+      def user_products_by_username
+        products = @user.products.paginate(page: params[:page], per_page: 20)
+        render json: ProductSerializer.new(products).serializable_hash.merge(
+          meta: {
+            current_page: products.current_page,
+            total_pages: products.total_pages,
+            total_entries: products.total_entries
+          }
+        )
+      end
+
       # GET /api/v1/products
       def index
         products = Product.paginate(page: params[:page], per_page: 20)
         render json: {
-        products: ProductSerializer.new(products).serializable_hash,
-        meta: {
-          current_page: products.current_page,
-          total_pages: products.total_pages,
-          total_entries: products.total_entries
-        }
-      }.to_json
+          products: ProductSerializer.new(products).serializable_hash,
+          meta: {
+            current_page: products.current_page,
+            total_pages: products.total_pages,
+            total_entries: products.total_entries
+          }
+        }.to_json
       end
 
       # POST /api/v1/products
@@ -51,6 +64,13 @@ module Api
       end
 
       private
+
+      def set_user_by_username
+        @user = User.find_by(username: params[:username])
+        unless @user
+          render json: { error: 'User not found' }, status: :not_found
+        end
+      end
 
       def product_params
         params.require(:product).permit(:name, :description, :price, :photo)

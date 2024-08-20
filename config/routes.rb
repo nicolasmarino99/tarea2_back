@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   }
   namespace :api do
     namespace :v1 do
-      resources 'products'
+      get 'products/by_user/:username', to: 'products#user_products_by_username'
+      resources :products
     end
   end
 end
