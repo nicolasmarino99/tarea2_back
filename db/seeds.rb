@@ -1,23 +1,69 @@
-# db/seeds.rb
-
-# Clear existing products (optional)
 Product.delete_all
 
-# Define sample data with photo attribute
 products = [
-  { name: 'Product 1', description: 'Description for product 1', price: 100.0, photo: 'https://example.com/product1.jpg' },
-  { name: 'Product 2', description: 'Description for product 2', price: 200.0, photo: 'https://example.com/product2.jpg' },
-  { name: 'Product 3', description: 'Description for product 3', price: 300.0, photo: 'https://example.com/product3.jpg' },
-  { name: 'Product 4', description: 'Description for product 4', price: 400.0, photo: 'https://example.com/product4.jpg' },
-  { name: 'Product 5', description: 'Description for product 5', price: 500.0, photo: 'https://example.com/product5.jpg' },
-  { name: 'Product 6', description: 'Description for product 6', price: 600.0, photo: 'https://example.com/product6.jpg' },
-  { name: 'Product 7', description: 'Description for product 7', price: 700.0, photo: 'https://example.com/product7.jpg' },
-  { name: 'Product 8', description: 'Description for product 8', price: 800.0, photo: 'https://example.com/product8.jpg' },
-  { name: 'Product 9', description: 'Description for product 9', price: 900.0, photo: 'https://example.com/product9.jpg' },
-  { name: 'Product 10', description: 'Description for product 10', price: 1000.0, photo: 'https://example.com/product10.jpg' }
-]
+  { 
+    name: 'Disco Sólido 1TB Crucial BX500', 
+    description: 'Disco Sólido 1TB Crucial BX500', 
+    price: 268900.0, 
+    photo: 'https://example.com/crucial_bx500_1tb.jpg' 
+  },
+  { 
+    name: 'Memoria RAM 16GB DDR4 Corsair Vengeance', 
+    description: 'Memoria RAM 16GB DDR4 Corsair Vengeance 3200MHz', 
+    price: 74900.0, 
+    photo: 'https://example.com/corsair_vengeance_16gb.jpg' 
+  },
+  { 
+    name: 'Procesador AMD Ryzen 5 5600X', 
+    description: 'Procesador AMD Ryzen 5 5600X 6 núcleos 12 hilos', 
+    price: 319900.0, 
+    photo: 'https://example.com/amd_ryzen_5600x.jpg' 
+  },
+  { 
+    name: 'Tarjeta Gráfica NVIDIA GeForce RTX 3060', 
+    description: 'Tarjeta Gráfica NVIDIA GeForce RTX 3060 12GB GDDR6', 
+    price: 459900.0, 
+    photo: 'https://example.com/rtx_3060.jpg' 
+  },
+  { 
+    name: 'Disco Duro Externo 2TB WD My Passport', 
+    description: 'Disco Duro Externo 2TB WD My Passport USB 3.0', 
+    price: 189900.0, 
+    photo: 'https://example.com/wd_mypassport_2tb.jpg' 
+  },
+  { 
+    name: 'Monitor LG UltraGear 27GL850', 
+    description: 'Monitor Gamer LG UltraGear 27GL850 27" QHD 144Hz', 
+    price: 349900.0, 
+    photo: 'https://example.com/lg_ultragear_27gl850.jpg' 
+  },
+  { 
+    name: 'Teclado Mecánico Logitech G Pro', 
+    description: 'Teclado Mecánico Logitech G Pro RGB Switches GX Blue', 
+    price: 129900.0, 
+    photo: 'https://example.com/logitech_gpro_keyboard.jpg' 
+  },
+  { 
+    name: 'Mouse Inalámbrico Razer DeathAdder V2', 
+    description: 'Mouse Inalámbrico Razer DeathAdder V2 Ergonomic', 
+    price: 99900.0, 
+    photo: 'https://example.com/razer_deathadder_v2.jpg' 
+  },
+  { 
+    name: 'Auriculares HyperX Cloud II', 
+    description: 'Auriculares Gamer HyperX Cloud II con sonido 7.1', 
+    price: 129900.0, 
+    photo: 'https://example.com/hyperx_cloud_ii.jpg' 
+  },
+  { 
+    name: 'Placa Base MSI B450 TOMAHAWK MAX', 
+    description: 'Placa Base MSI B450 TOMAHAWK MAX ATX', 
+    price: 189900.0, 
+    photo: 'https://example.com/msi_b450_tomahawk_max.jpg' 
+  }
+];
 
-# Create products in the database
+
 products.each do |product|
   Product.create!(product)
 end

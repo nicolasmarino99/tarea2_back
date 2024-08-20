@@ -7,7 +7,14 @@ module Api
       # GET /api/v1/products
       def index
         products = Product.paginate(page: params[:page], per_page: 20)
-        render json: ProductSerializer.new(products).serializable_hash.to_json
+        render json: {
+        products: ProductSerializer.new(products).serializable_hash,
+        meta: {
+          current_page: products.current_page,
+          total_pages: products.total_pages,
+          total_entries: products.total_entries
+        }
+      }.to_json
       end
 
       # POST /api/v1/products
